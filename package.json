@@ -1,0 +1,37 @@
+{
+  "name": "techmartx",
+  "version": "1.0.0",
+  "description": "e-commerce app built with MERN",
+  "homepage": "https://github.com/RandulaTharaka/TechMartX#readme",
+  "bugs": {
+    "url": "https://github.com/RandulaTharaka/TechMartX/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RandulaTharaka/TechMartX.git"
+  },
+  "license": "MIT",
+  "author": "Randula Tharaka",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+    "data:import": "node backend/seeder.js",
+    "data:destroy": "node backend/seeder.js -d"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "colors": "^1.4.0",
+    "express": "^5.1.0",
+    "mongodb": "^6.16.0",
+    "mongoose": "^8.15.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "dotenv": "^16.5.0",
+    "nodemon": "^3.1.10"
+  }
+}

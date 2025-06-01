@@ -1,9 +1,13 @@
-import { Navbar, Nav, Container } from "react-bootstrap";
+import { Navbar, Nav, Container, Badge } from "react-bootstrap";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
 import { LinkContainer } from "react-router-bootstrap";
 import logo from "../assets/logo.png";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  // using useSelector to access the cart state from the Redux store
+  const { cartItems } = useSelector((state) => state.cart); // cart is coming from store.js carSliceReducer
+
   return (
     <header>
       <Navbar bg="dark" variant="dark" expand="md" collapseOnSelect>
@@ -21,6 +25,11 @@ const Header = () => {
               <Nav.Link href="/cart">
                 <FaShoppingCart />
                 Cart
+                {cartItems.length > 0 && (
+                  <Badge pill bg="success" style={{ marginLeft: "5px" }}>
+                    {cartItems.reduce((a, c) => a + c.qty, 0)}
+                  </Badge>
+                )}
               </Nav.Link>
 
               <Nav.Link href="/login">

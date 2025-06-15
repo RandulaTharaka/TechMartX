@@ -24,7 +24,7 @@ app.get(`/`, (req, res) => {
   res.send(`API is running...`);
 });
 
-app.use("/api/products", productRoutes);
+app.use("/api/products", productRoutes); //  It tells the Express application to use the productRoutes router for any incoming HTTP requests that start with the path /api/products.
 app.use("/api/users", userRoutes);
 
 app.use(notFound);

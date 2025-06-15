@@ -18,6 +18,7 @@ import Message from "../components/Message";
 import { addToCart } from "../slices/cartSlice";
 import { useDispatch } from "react-redux"; // for dispatching actions
 
+// The ProductScreen component is a React functional component that displays detailed information about a single product in this e-commerce application.
 const ProductScreen = () => {
   /* const [product, setProduct] = useState(); 
   const { id: productId } = useParams(); //de-structuring*/
@@ -34,17 +35,23 @@ const ProductScreen = () => {
   if (!product) {
     return <p>Loading...</p>;
   } */
+
+  // Use React Router’s useParams hook to extract the product ID from the URL, which is then used to fetch the product’s details.
+
   const { id: productId } = useParams(); //de-structuring
 
+  // The component maintains a local state variable qty to track the quantity of the product the user wants to add to their cart, defaulting to 1
   const [qty, setQty] = useState(1); // for quantity selection // default value is 1
 
   // Using RTK Query to fetch product details
+  // Instead of manually fetching data with axios and managing local state, the component leverages RTK Query’s useGetProductDetailsQuery hook to automatically fetch and cache the product data from the backend.
   const {
     data: product,
     isLoading,
     error,
   } = useGetProductDetailsQuery(productId);
 
+  // It also uses Redux’s useDispatch to dispatch actions and React Router’s useNavigate to programmatically navigate the user to the cart page after adding an item.
   const dispatch = useDispatch(); // for dispatching actions
   const navigate = useNavigate(); // for navigation
 
@@ -52,8 +59,10 @@ const ProductScreen = () => {
   // This function will dispatch the addToCart action with the product details
   // calls the add to cart handler from the cart slice
 
+  // The “Add To Cart” button dispatches an action to add the selected product and quantity to the Redux store and then navigates the user to the cart page.
   const addToCartHandler = () => {
     dispatch(addToCart({ ...product, qty })); // dispatching the addToCart action
+    // The syntax { ...product, qty } uses the JavaScript spread operator to copy all key-value pairs from the product object and then adds or overrides the qty property with the current quantity selected by the user.
     navigate("/cart");
   };
 

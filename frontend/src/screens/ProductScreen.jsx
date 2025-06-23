@@ -12,7 +12,7 @@ import {
   Form,
 } from "react-bootstrap";
 import Rating from "../components/Rating";
-import { useGetProductDetailsQuery } from "../slices/productApiSllice";
+import { useGetProductDetailsQuery } from "../slices/productsApiSllice";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { addToCart } from "../slices/cartSlice";

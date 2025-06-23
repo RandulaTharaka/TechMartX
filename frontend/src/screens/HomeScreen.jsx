@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Row, Col } from "react-bootstrap";
 import Product from "../components/Product";
-import { useGetProductsQuery } from "../slices/productApiSllice";
+import { useGetProductsQuery } from "../slices/productsApiSllice";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 

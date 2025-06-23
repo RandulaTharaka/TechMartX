@@ -7,14 +7,14 @@ import { updateCart } from "../utils/cartUtils";
 
 // Initially checking items in local storage if any available and setting initial state
 const initialState = localStorage.getItem("cart")
-  ? JSON.parse(localStorage.getItem("cart"))
+  ? JSON.parse(localStorage.getItem("cart")) // Local storage save it as a string, so we parse it as JSON
   : {
       cartItems: [],
       // define all expected properties for the cart state
-      // itemsPrice: "0.00",
-      // shippingPrice: "0.00",
-      // taxPrice: "0.00",
-      // totalPrice: "0.00",
+      itemsPrice: "0.00",
+      shippingPrice: "0.00",
+      taxPrice: "0.00",
+      totalPrice: "0.00",
     };
 
 // A slice is a section of your Redux state (Redux state is always global.)
@@ -61,6 +61,10 @@ const cartSlice = createSlice({
   },
 });
 
+// exporting the action creators
+// addToCart, removeFromCart are action creators
+// Exporting the action creators means making the functions (like addToCart and removeFromCart) available for use in other files of your project.
+// These action creators are functions that, when called, return an action object that can be dispatched to the Redux store to update the state.
 export const { addToCart, removeFromCart } = cartSlice.actions;
 
-export default cartSlice.reducer;
+export default cartSlice.reducer; // exporting the reducer function to be used in the redux store

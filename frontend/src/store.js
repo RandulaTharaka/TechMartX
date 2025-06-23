@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { apiSlice } from "./slices/apiSlice";
 import cartSliceReducer from "./slices/cartSlice";
+import authSliceReducer from "./slices/authSlice";
 
 // This file is configuring a Redux store using Redux Toolkit’s configureStore func. This store acts as the central place to manage the state of your application.
 
@@ -39,7 +40,8 @@ Summary:
 const store = configureStore({
   reducer: {
     [apiSlice.reducerPath]: apiSlice.reducer,
-    cart: cartSliceReducer,
+    cart: cartSliceReducer, // cartSliceReducer manages cart state
+    auth: authSliceReducer, // authSliceReducer manages authentication state
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(apiSlice.middleware),

@@ -15,6 +15,9 @@ const initialState = localStorage.getItem("cart")
       shippingPrice: "0.00",
       taxPrice: "0.00",
       totalPrice: "0.00",
+
+      shippingAddress: {},
+      paymentMethod: "PayPal",
     };
 
 // A slice is a section of your Redux state (Redux state is always global.)
@@ -58,6 +61,18 @@ const cartSlice = createSlice({
 
       return updateCart(state); // update the cart after removing the item
     },
+    saveShippingAddress: (state, action) => {
+      state.shippingAddress = action.payload;
+      return updateCart(state);
+    },
+    savePaymentMethod: (state, action) => {
+      state.paymentMethod = action.payload;
+      return updateCart(state);
+    },
+    clearCartItems: (state, action) => {
+      state.cartItems = [];
+      return updateCart(state);
+    },
   },
 });
 
@@ -65,6 +80,12 @@ const cartSlice = createSlice({
 // addToCart, removeFromCart are action creators
 // Exporting the action creators means making the functions (like addToCart and removeFromCart) available for use in other files of your project.
 // These action creators are functions that, when called, return an action object that can be dispatched to the Redux store to update the state.
-export const { addToCart, removeFromCart } = cartSlice.actions;
+export const {
+  addToCart,
+  removeFromCart,
+  saveShippingAddress,
+  savePaymentMethod,
+  clearCartItems,
+} = cartSlice.actions;
 
 export default cartSlice.reducer; // exporting the reducer function to be used in the redux store

@@ -50,7 +50,7 @@ const LoginScreen = () => {
     try {
       const res = await login({ email, password }).unwrap(); // unwrap() is used to get the actual data from the promise returned by the mutation
       dispatch(setCredentials({ ...res })); // Dispatching the setCredentials action with the response
-      // navigate(redirect);
+      navigate(redirect);
     } catch (err) {
       toast.error(err?.data?.message || err.error); // questions marks for optional chaining, which prevents errors if data or message is undefined
     }

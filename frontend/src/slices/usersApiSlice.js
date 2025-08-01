@@ -31,8 +31,55 @@ export const UsersApiSlice = apiSlice.injectEndpoints({
         method: "POST",
       }),
     }),
+    profile: builder.mutation({
+      query: (data) => ({
+        url: `${USERS_URL}/profile`,
+        method: "PUT",
+        body: data, //send the data in body
+      }),
+    }),
+    getUsers: builder.query({
+      query: () => ({
+        url: USERS_URL,
+        method: "GET",
+      }),
+      providesTags: ["User"],
+      keepUnusedDataFor: 5,
+    }),
+    getUserDetails: builder.query({
+      query: (id) => ({
+        url: `${USERS_URL}/${id}`,
+        method: "GET",
+      }),
+      keepUnusedDataFor: 5,
+    }),
+    updateUser: builder.mutation({
+      query: (data) => {
+        console.log(data);
+        return {
+          url: `${USERS_URL}/${data.userId}`,
+          method: "PUT",
+          body: data,
+        };
+      },
+      invalidatesTags: ["User"],
+    }),
+    deleteUser: builder.mutation({
+      query: (userId) => ({
+        url: `${USERS_URL}/${userId}`,
+        method: "DELETE",
+      }),
+    }),
   }),
 });
 
-export const { useLoginMutation, useLogoutMutation, useRegisterMutation } =
-  UsersApiSlice; // naming convension - 'getProducts', prefixed with 'use' & postfixed with 'Query'
+export const {
+  useLoginMutation,
+  useLogoutMutation,
+  useRegisterMutation,
+  useProfileMutation,
+  useGetUsersQuery,
+  useGetUserDetailsQuery,
+  useUpdateUserMutation,
+  useDeleteUserMutation,
+} = UsersApiSlice; // naming convension - 'getProducts', prefixed with 'use' & postfixed with 'Query'

@@ -1,7 +1,6 @@
 import path from "path";
 import express from "express"; // "type: module"
 import dotenv from "dotenv";
-dotenv.config();
 import cookieParser from "cookie-parser"; // for parsing cookies in requests
 import connectDB from "./config/db.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
@@ -56,6 +55,7 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
   );
 } else {
+  dotenv.config();
   app.get("/", (req, res) => {
     res.send(`API is running...`);
   });

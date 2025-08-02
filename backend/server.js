@@ -1,5 +1,7 @@
 import path from "path";
 import express from "express"; // "type: module"
+import dotenv from "dotenv";
+dotenv.config();
 import cookieParser from "cookie-parser"; // for parsing cookies in requests
 import connectDB from "./config/db.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";

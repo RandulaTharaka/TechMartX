@@ -8,9 +8,7 @@ import Message from "../components/Message";
 const ProductCarousel = () => {
   const { data: products, isLoading, error } = useGetTopProductsQuery();
 
-  return isLoading ? (
-    <Loader />
-  ) : error ? (
+  return isLoading ? null : error ? (
     <Message variant="danger">{error}</Message>
   ) : (
     <Carousel className="bg-primary mb-4">

@@ -1,8 +1,6 @@
 import path from "path";
 import express from "express"; // "type: module"
-import dotenv from "dotenv";
 import cookieParser from "cookie-parser"; // for parsing cookies in requests
-dotenv.config();
 import connectDB from "./config/db.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import productRoutes from "./routes/productRoutes.js";

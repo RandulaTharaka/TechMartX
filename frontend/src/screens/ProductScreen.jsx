@@ -59,8 +59,7 @@ const ProductScreen = () => {
     error,
   } = useGetProductDetailsQuery(productId);
 
-  const [createProductReview, { isLoading: loadingCreateProductReview }] =
-    useCreateProductReviewMutation();
+  const [createProductReview] = useCreateProductReviewMutation();
 
   // It also uses Redux’s useDispatch to dispatch actions and React Router’s useNavigate to programmatically navigate the user to the cart page after adding an item.
   const dispatch = useDispatch(); // for dispatching actions

@@ -11,6 +11,7 @@ import {
 
 import { FaTrash } from "react-icons/fa";
 import Message from "../components/Message";
+import Meta from "../components/Meta";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "../slices/cartSlice";
 

@@ -54,7 +54,7 @@ const ProfileScreen = () => {
   };
   return (
     <Row>
-      <Meta title="Profile" />
+      <Meta title="User Profile" />
       <Col md={3}>
         <h2>User Profile</h2>
 

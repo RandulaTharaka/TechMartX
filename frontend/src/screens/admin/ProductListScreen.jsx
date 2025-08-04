@@ -6,12 +6,12 @@ import Message from "../../components/Message";
 import Loader from "../../components/Loader";
 import { toast } from "react-toastify";
 import Paginate from "../../components/Paginate";
+import Meta from "../../components/Meta";
 import {
   useGetProductsQuery,
   useCreateProductMutation,
   useDeleteProductMutation,
 } from "../../slices/productsApiSlice";
-import Meta from "../components/Meta";
 
 const ProductListScreen = () => {
   const { pageNumber } = useParams();

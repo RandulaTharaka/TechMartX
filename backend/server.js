@@ -52,7 +52,7 @@ if (process.env.NODE_ENV === "production") {
 
   // any route that is not api will be redirected to index.html
   // This serves the index.html file for any route that doesn't match an API route, allowing the frontend to handle routing.
-  app.get("/{*splat}", (req, res) =>
+  app.get("/*", (req, res) =>
     res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
   );
 } else {

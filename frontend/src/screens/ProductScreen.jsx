@@ -98,7 +98,7 @@ const ProductScreen = () => {
         className="btn btn-light my-3"
         to="/"
         onClick={() => {
-          <Meta title={null} />;
+          <Meta />;
         }}
       >
         Go Back

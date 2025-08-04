@@ -9,6 +9,7 @@ import { useProfileMutation } from "../slices/usersApiSlice";
 import { setCredentials } from "../slices/authSlice";
 import { useGetMyOrdersQuery } from "../slices/ordersApiSlice";
 import { Link } from "react-router-dom";
+import Meta from "../components/Meta";
 
 const ProfileScreen = () => {
   const [name, setName] = useState("");
@@ -53,6 +54,7 @@ const ProfileScreen = () => {
   };
   return (
     <Row>
+      <Meta title="Profile" />
       <Col md={3}>
         <h2>User Profile</h2>
 

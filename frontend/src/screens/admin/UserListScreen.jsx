@@ -4,6 +4,7 @@ import { FaTrash, FaEdit, FaCheck, FaTimes } from "react-icons/fa";
 import Message from "../../components/Message";
 import Loader from "../../components/Loader";
 import { toast } from "react-toastify";
+import Meta from "../components/Meta";
 import {
   useGetUsersQuery,
   useDeleteUserMutation,
@@ -28,6 +29,7 @@ const UserListScreen = () => {
 
   return (
     <>
+      <Meta title="Users" />
       <h1>Users</h1>
       {isLoading ? (
         <Loader />

@@ -36,6 +36,7 @@ const CartScreen = () => {
 
   return (
     <div>
+      <Meta title="Shopping Cart" />
       <Row>
         <Col md={8}>
           <h1 style={{ marginBottom: "20px" }}>Shopping Cart</h1>

@@ -6,6 +6,7 @@ import FormContainer from "../../components/FormContainer";
 import Loader from "../../components/Loader";
 import Message from "../../components/Message";
 import { toast } from "react-toastify";
+import Meta from "../components/Meta";
 
 import {
   useGetUserDetailsQuery,
@@ -58,6 +59,7 @@ const UserEditScreen = () => {
 
   return (
     <>
+      <Meta title="Edit User" />
       <Link to={"/admin/userlist"} className="btn btn-light my-3">
         Go Back
       </Link>

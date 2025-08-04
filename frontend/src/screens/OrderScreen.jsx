@@ -12,6 +12,7 @@ import {
 } from "../slices/ordersApiSlice";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
+import Meta from "../components/Meta";
 
 const OrderScreen = () => {
   const { id: orderId } = useParams(); // Get the order ID from the URL parameters
@@ -125,6 +126,7 @@ const OrderScreen = () => {
     <Message variant="danger">{error?.data?.message || error.error}</Message>
   ) : (
     <>
+      <Meta title="Order" />
       <h1>Order {order._id}</h1>
       <Row>
         <Col md={8}>

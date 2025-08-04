@@ -58,6 +58,7 @@ const LoginScreen = () => {
 
   return (
     <FormContainer>
+      <Meta title="Login" />
       <h1>Sing In</h1>
 
       <Form onSubmit={submitHandler}>

@@ -68,7 +68,7 @@ const OrderScreen = () => {
     // this triggers paypal    // details returns by paypal
     return actions.order.capture().then(async function (details) {
       try {
-        await payOrder(orderId, details);
+        await payOrder({ orderId, details }).unwrap();
         refetch(); // Refetch the order details after payment, calling the refetch defined in useGetOrderDetailsQuery(orderId) hook.
         toast.success("Payment successful");
       } catch (err) {
@@ -78,9 +78,13 @@ const OrderScreen = () => {
   }
   async function onApproveTest() {
     // (just for testing purposes) set the pay to true, so we don't have to go through pay pal
-    await payOrder({ orderId, details: { payer: {} } });
-    refetch(); //  Refetch the order details after payment, calling the refetch defined in useGetOrderDetailsQuery(orderId) hook.
-    toast.success("Payment successful");
+    try {
+      await payOrder({ orderId, details: { payer: {} } }).unwrap();
+      refetch(); //  Refetch the order details after payment, calling the refetch defined in useGetOrderDetailsQuery(orderId) hook.
+      toast.success("Payment successful");
+    } catch (err) {
+      toast.error(err?.data?.message || err.message);
+    }
   }
 
   function onError(err) {
@@ -118,7 +122,7 @@ const OrderScreen = () => {
   return isLoading ? (
     <Loader />
   ) : error ? (
-    <Message variant="danger" />
+    <Message variant="danger">{error?.data?.message || error.error}</Message>
   ) : (
     <>
       <h1>Order {order._id}</h1>

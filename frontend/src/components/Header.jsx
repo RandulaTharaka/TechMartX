@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { useLogoutMutation } from "../slices/usersApiSlice";
 import { logout } from "../slices/authSlice";
 import SearchBox from "../components/SearchBox";
+import { resetCart } from "../slices/cartSlice";
 
 const Header = () => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -21,6 +22,7 @@ const Header = () => {
     try {
       await logoutApiCall().unwrap(); // clear the JWT
       dispatch(logout()); // clear the userInfo state & local storage
+      dispatch(resetCart());
       navigate("/login");
     } catch (err) {
       console.log(err);

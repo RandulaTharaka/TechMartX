@@ -7,7 +7,7 @@ const SearchBox = () => {
   const { keyword: urlKeyword } = useParams();
   const navigate = useNavigate();
 
-  const [keyword, setKeyword] = useState(urlKeyword);
+  const [keyword, setKeyword] = useState(urlKeyword || ""); // Initialize with URL keyword or empty string when the url key is not set
 
   const submitHandler = (e) => {
     e.preventDefault();

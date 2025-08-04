@@ -30,7 +30,7 @@ const HomeScreen = () => {
   return (
     // format - isLoading ? () : error ? () : ()
     <>
-      <Meta />
+      <Meta title="TechMartX" />
       {!keyword ? (
         <ProductCarousel />
       ) : (

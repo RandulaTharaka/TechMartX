@@ -36,16 +36,17 @@ app.get("/api/config/paypal", (req, res) =>
 app.use("/api/upload", uploadRoutes);
 
 // Access uploaded image
-const __dirname = path.resolve(); // path.resolve() returns the absolute path to the current working directory.
-
-// Allows user(frontend) to access uploaded files via a public URL
-// Serve static files from the uploads directory.
-// express.static(...) is middleware that serves files directly (like images, PDFs, etc.)
-// path.join(__dirname, "/uploads") creates the absolute path to your uploads folder
-// If you type /uploads/filename.jpg in your browser, Express will look for a file called filename.jpg inside the uploads folder in your project root.
-app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
 if (process.env.NODE_ENV === "production") {
+  const __dirname = path.resolve(); // path.resolve() returns the absolute path to the current working directory.
+
+  // Allows user(frontend) to access uploaded files via a public URL
+  // Serve static files from the uploads directory.
+  // express.static(...) is middleware that serves files directly (like images, PDFs, etc.)
+  // path.join(__dirname, "/uploads") creates the absolute path to your uploads folder
+  // If you type /uploads/filename.jpg in your browser, Express will look for a file called filename.jpg inside the uploads folder in your project root.
+  app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
+
   // set static folder
   // Serve static files from the frontend build directory
   app.use(express.static(path.join(__dirname, "/frontend/build")));

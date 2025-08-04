@@ -34,8 +34,12 @@ const Header = () => {
       <Navbar bg="dark" variant="dark" expand="md" collapseOnSelect>
         <Container>
           <Navbar.Brand as={Link} to="/">
-            <img src={logo} alt="TechMartX" />
-            TechMartX
+            <span
+              style={{ display: "flex", alignItems: "center", gap: "12px" }}
+            >
+              <img src={logo} alt="TechMartX" style={{ height: "50px" }} />
+              <p style={{ margin: 0 }}>TechMartX</p>
+            </span>
           </Navbar.Brand>
 
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -43,7 +47,7 @@ const Header = () => {
             <Nav className="ms-auto">
               <SearchBox />
               <Nav.Link as={Link} to="/cart">
-                <FaShoppingCart />
+                <FaShoppingCart className="mx-1" />
                 Cart
                 {cartItems.length > 0 && (
                   <Badge pill bg="success" style={{ marginLeft: "5px" }}>

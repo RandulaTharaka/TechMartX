@@ -40,7 +40,7 @@ const LoginScreen = () => {
   // Redirects to the specified path if userInfo is available
   useEffect(() => {
     if (userInfo) {
-      navigate(redirect);
+      navigate(`/${redirect}`);
     }
   }, [userInfo, navigate, redirect]);
 

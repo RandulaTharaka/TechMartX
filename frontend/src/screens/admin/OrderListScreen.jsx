@@ -5,6 +5,8 @@ import Message from "../../components/Message";
 import Loader from "../../components/Loader";
 import { useGetOrdersQuery } from "../../slices/ordersApiSlice";
 import Meta from "../../components/Meta";
+import formatPrice from "../../utils/formatPrice";
+import formatDate from "../../utils/formatDate";
 
 const OrderListScreen = () => {
   const { data: orders, isLoading, error } = useGetOrdersQuery();
@@ -38,7 +40,7 @@ const OrderListScreen = () => {
                 <td>{order.User && order.User.name}</td>
                 <td>{order.createdAt.substring(0, 10)}</td>
                 {/* substring(0, 10) returns the first 10 characters of a string. */}
-                <td>${order.totalPrice}</td>
+                <td>Rs.{formatPrice(order.totalPrice)}</td>
                 <td>
                   {order.isPaid ? (
                     order.paidAt.substring(0, 10)

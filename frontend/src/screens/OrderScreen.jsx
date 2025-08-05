@@ -13,6 +13,8 @@ import {
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import Meta from "../components/Meta";
+import formatPrice from "../utils/formatPrice";
+import { formatDate } from "../utils/formatDate";
 
 const OrderScreen = () => {
   const { id: orderId } = useParams(); // Get the order ID from the URL parameters
@@ -126,8 +128,8 @@ const OrderScreen = () => {
     <Message variant="danger">{error?.data?.message || error.error}</Message>
   ) : (
     <>
-      <Meta title={`Order: ${order._id}`} />
-      <h1>Order {order._id}</h1>
+      <Meta title={`Pay Order: ${order._id}`} />
+      <h1>Order: {order._id}</h1>
       <Row>
         <Col md={8}>
           <ListGroup variant="flush">
@@ -148,7 +150,7 @@ const OrderScreen = () => {
               </p>
               {order.isDelivered ? (
                 <Message variant="success">
-                  Delivered On {order.deliveredAt}
+                  Delivered On: {formatDate(order.deliveredAt)}
                 </Message>
               ) : (
                 <Message variant="danger">Not Delivered</Message>
@@ -161,7 +163,9 @@ const OrderScreen = () => {
                 {order.paymentMethod}
               </p>
               {order.isPaid ? (
-                <Message variant="success">Paid On {order.paidAt}</Message>
+                <Message variant="success">
+                  Paid On: {formatDate(order.paidAt)}
+                </Message>
               ) : (
                 <Message variant="danger">Not Paid</Message>
               )}
@@ -178,8 +182,8 @@ const OrderScreen = () => {
                       <Link to={`/product/${item.product}`}>{item.name}</Link>
                     </Col>
                     <Col md={4}>
-                      {item.qty} x Rs. {item.price} = Rs.
-                      {(item.qty * item.price).toFixed(2)}
+                      {item.qty} x Rs.{formatPrice(item.price)} = Rs.
+                      {formatPrice(item.qty * item.price)}
                     </Col>
                   </Row>
                 </ListGroup.Item>
@@ -195,24 +199,29 @@ const OrderScreen = () => {
               </ListGroup.Item>
 
               <ListGroup.Item>
-                <Row>
+                <Row className="mb-1">
                   <Col>Items:</Col>
-                  <Col>Rs. {order.itemsPrice}</Col>
+                  <Col>Rs. {formatPrice(order.itemsPrice)}</Col>
                 </Row>
 
-                <Row>
+                <Row className="mb-1">
                   <Col>Shipping:</Col>
-                  <Col>Rs. {order.shippingPrice}</Col>
+                  <Col>Rs. {formatPrice(order.shippingPrice)}</Col>
                 </Row>
 
-                <Row>
+                <Row className="mb-2">
                   <Col>Tax:</Col>
-                  <Col>Rs. {order.taxPrice}</Col>
+                  <Col>Rs. {formatPrice(order.taxPrice)}</Col>
                 </Row>
 
                 <Row>
-                  <Col>Total:</Col>
-                  <Col>Rs. {order.totalPrice}</Col>
+                  <hr />
+                  <Col>
+                    <strong>Total:</strong>
+                  </Col>
+                  <Col>
+                    <strong>Rs. {formatPrice(order.totalPrice)}</strong>
+                  </Col>
                 </Row>
 
                 {!order.isPaid && ( // && means 'then' here. && is used here to render a component only if a condition is true

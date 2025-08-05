@@ -14,10 +14,16 @@ const ProductCarousel = () => {
       {products.map((product) => (
         <Carousel.Item key={product._id}>
           <Link to={`/product/${product._id}`}>
-            <Image src={product.image} alt={product.name} fluid></Image>
+            <Image
+              src={product.image}
+              alt={product.name}
+              fluid
+              className="carousel-img"
+            ></Image>
             <Carousel.Caption>
               <h2 className="text-white text-right">
-                {product.name} (Rs. {product.price})
+                {product.name} (Rs.{" "}
+                {Number(product.price).toLocaleString("en-US", {})})
               </h2>
             </Carousel.Caption>
           </Link>

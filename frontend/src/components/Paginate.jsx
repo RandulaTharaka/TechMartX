@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Paginate = ({ pages, page, isAdmin = false, keyword = "" }) => {
   return (
     pages > 1 && (
-      <Pagination>
+      <Pagination className="mt-4 justify-content-center">
         {/* Generate number of paginates - Refer note */}
         {[...Array(pages).keys()].map((x) => (
           <Pagination.Item

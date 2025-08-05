@@ -10,6 +10,7 @@ import { setCredentials } from "../slices/authSlice";
 import { useGetMyOrdersQuery } from "../slices/ordersApiSlice";
 import { Link } from "react-router-dom";
 import Meta from "../components/Meta";
+import formatPrice from "../utils/formatPrice";
 
 const ProfileScreen = () => {
   const [name, setName] = useState("");
@@ -130,7 +131,7 @@ const ProfileScreen = () => {
                 <tr key={order._id}>
                   <td>{order._id}</td>
                   {<td>{order.createdAt.substring(0, 10)}</td>}
-                  <td>{order.totalPrice}</td>
+                  <td>Rs. {formatPrice(order.totalPrice)}</td>
                   <td>
                     {order.isPaid ? (
                       order.paidAt.substring(0, 10)

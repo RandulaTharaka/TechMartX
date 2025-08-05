@@ -129,7 +129,7 @@ const ProductEditScreen = () => {
             </Form.Group>
 
             <Form.Group controlId="price" className="my-2">
-              <Form.Label>Price</Form.Label>
+              <Form.Label>Price Rs.</Form.Label>
               <Form.Control
                 type="number"
                 placeholder="Enter price"

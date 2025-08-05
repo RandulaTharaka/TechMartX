@@ -123,9 +123,16 @@ const ProductScreen = () => {
                     text={`${product.numReviews} reviews`}
                   />
                 </ListGroup.Item>
-                <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
                 <ListGroup.Item>
-                  Description: ${product.description}
+                  Price: Rs.{" "}
+                  {Number(product.price).toLocaleString("en-US", {
+                    //ensure that the number is always displayed with exactly two decimal places
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  })}
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  Description: {product.description}
                 </ListGroup.Item>
               </ListGroup>
             </Col>
@@ -137,7 +144,14 @@ const ProductScreen = () => {
                     <Row>
                       <Col>Price:</Col>
                       <Col>
-                        <strong>${product.price}</strong>
+                        <strong>
+                          Rs.{" "}
+                          {Number(product.price).toLocaleString("en-US", {
+                            //  ensure that the number is always displayed with exactly two decimal places
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2,
+                          })}
+                        </strong>
                       </Col>
                     </Row>
                   </ListGroup.Item>

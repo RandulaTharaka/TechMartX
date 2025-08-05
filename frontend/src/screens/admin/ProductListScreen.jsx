@@ -7,6 +7,7 @@ import Loader from "../../components/Loader";
 import { toast } from "react-toastify";
 import Paginate from "../../components/Paginate";
 import Meta from "../../components/Meta";
+import formatPrice from "../../utils/formatPrice";
 import {
   useGetProductsQuery,
   useCreateProductMutation,
@@ -92,7 +93,7 @@ const ProductListScreen = () => {
                 <tr key={product._id}>
                   <td>{product._id}</td>
                   <td>{product.name}</td>
-                  <td>{product.price}</td>
+                  <td>Rs. {formatPrice(product.price)}</td>
                   <td>{product.category}</td>
                   <td>{product.brand}</td>
                   <td>

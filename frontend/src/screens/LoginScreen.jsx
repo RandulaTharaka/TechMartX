@@ -37,11 +37,12 @@ const LoginScreen = () => {
   const searchParams = new URLSearchParams(search);
   // Getting the redirect parameter or defaulting to "/"
   const redirect = searchParams.get("redirect") || "/";
+  const safeRedirect = redirect.startsWith("/") ? redirect : `/${redirect}`;
 
   // Redirects to the specified path if userInfo is available
   useEffect(() => {
     if (userInfo) {
-      navigate(`/${redirect}`);
+      navigate(safeRedirect);
     }
   }, [userInfo, navigate, redirect]);
 
@@ -51,7 +52,7 @@ const LoginScreen = () => {
     try {
       const res = await login({ email, password }).unwrap(); // unwrap() is used to get the actual data from the promise returned by the mutation
       dispatch(setCredentials({ ...res })); // Dispatching the setCredentials action with the response
-      navigate(redirect);
+      navigate(safeRedirect);
     } catch (err) {
       toast.error(err?.data?.message || err.error); // questions marks for optional chaining, which prevents errors if data or message is undefined
     }

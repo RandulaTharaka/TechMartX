@@ -12,6 +12,7 @@ import {
 import { FaTrash } from "react-icons/fa";
 import Message from "../components/Message";
 import Meta from "../components/Meta";
+import formatPrice from "../utils/formatPrice";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "../slices/cartSlice";
 
@@ -56,7 +57,7 @@ const CartScreen = () => {
                     <Col md={3}>
                       <Link to={`/product/${item._id}`}>{item.name}</Link>
                     </Col>
-                    <Col md={2}>Rs. {item.price}</Col>
+                    <Col md={2}>Rs. {formatPrice(item.price)}</Col>
                     <Col md={2}>
                       <Form.Control
                         as="select"
@@ -99,10 +100,14 @@ const CartScreen = () => {
                   Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}
                   )
                 </h2>
-                Rs.
-                {cartItems
-                  .reduce((acc, item) => acc + item.qty * item.price, 0)
-                  .toFixed(2)}
+                Rs.{" "}
+                {formatPrice(
+                  Number(
+                    cartItems
+                      .reduce((acc, item) => acc + item.qty * item.price, 0)
+                      .toFixed(2)
+                  )
+                )}
               </ListGroup.Item>
               <ListGroup.Item>
                 <Button

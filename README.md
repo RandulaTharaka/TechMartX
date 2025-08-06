@@ -44,7 +44,7 @@ Throughout the project, I thoroughly documented the code with comments to reinfo
 
 ### 🛒 Product Page
 
-![Product Page](uploads/screenshots/product.png)
+![Product Page](uploads/screenshots/Animation.gif)
 
 ### 📦 Cart and Checkout Flow
 

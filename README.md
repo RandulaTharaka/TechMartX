@@ -18,12 +18,21 @@ Beyond meeting course requirements, I focused on truly understanding how modern 
 
 Throughout the project, I thoroughly documented the code with comments to reinforce my understanding of key concepts such as component logic, API integration, state management, and user authentication.
 
+## 🧠 Developer Notes
+
+I've included a set of personal notes I created while learning and building this project.  
+They cover some foundational concepts in React, Redux, JavaScript and other Technologies used along with code explanations and architectural thoughts.
+
+📄 [View Developer Notes PDF](docs/TechMartX_DeveloperNotes.pdf)
+
+Note that this is a raw, working document created during my learning process - not a finalized guide.
+
 ## 🛠️ Tech Stack
 
 - **Frontend:** React, Redux Toolkit, React Bootstrap, React Router
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB (hosted on MongoDB Atlas)
-- **Other Tools & Concepts:** JWT Authentication, RESTful APIs
+- **Other Tools & Concepts:** JWT Authentication, RESTful APIs, Postman, MongoDB Compass
 
 ## ✨ Key Features
 
@@ -40,7 +49,7 @@ Throughout the project, I thoroughly documented the code with comments to reinfo
 
 ### 🏠 Home Page
 
-![Homepage](uploads/screenshots/homepage.png)
+![Homepage](uploads/screenshots/homepage.jpg)
 
 ### 🛒 Product Page
 

@@ -49,19 +49,19 @@ Note that this is a raw, working document created during my learning process - n
 
 ### 🏠 Home Page
 
-![Homepage](uploads/screenshots/homepage.jpg)
+![Homepage](docs/screenshots/homepage.jpg)
 
 ### 📦 Product Page
 
-![Homepage](uploads/screenshots/productpage.jpg)
+![Homepage](docs/screenshots/product_page.jpg)
 
 ### 🛒 Cart and Checkout Flow
 
-![Cart](uploads/screenshots/checkout_flow.gif)
+![Cart](docs/screenshots/checkout_flow.gif)
 
 ### 🛠️ Admin Panel
 
-![Admin Panel](uploads/screenshots/admin_panel.gif)
+![Admin Panel](docs/screenshots/admin_panel.gif)
 
 ## 📦 Installation
 

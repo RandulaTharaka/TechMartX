@@ -51,13 +51,13 @@ Note that this is a raw, working document created during my learning process - n
 
 ![Homepage](uploads/screenshots/homepage.jpg)
 
-### 🛒 Product Page
+### 🛒 Cart and Checkout Flow
 
-![Product Page](uploads/screenshots/Animation.gif)
+![Cart](uploads/screenshots/checkout_flow.gif)
 
-### 📦 Cart and Checkout Flow
+### 📦 Product Page
 
-![Cart](screenshots/cart.png)
+![Product Page]()
 
 ### 🛠️ Admin Panel
 

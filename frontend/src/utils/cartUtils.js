@@ -26,10 +26,10 @@ export const updateCart = (state) => {
       state.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0)
     );
     // Calculate shipping price    // If items price is more than 10000, shipping is free, else it's 100
-    state.shippingPrice = addDecimals(state.itemsPrice > 10000 ? 0 : 100);
+    state.shippingPrice = addDecimals(250);
 
     // Calculate tax price
-    state.taxPrice = addDecimals(Number(0.15 * state.itemsPrice));
+    state.taxPrice = addDecimals(Number(0.05 * state.itemsPrice));
 
     // Calculate total price
     state.totalPrice = (

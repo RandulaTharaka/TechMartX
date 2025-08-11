@@ -51,21 +51,17 @@ Note that this is a raw, working document created during my learning process - n
 
 ![Homepage](uploads/screenshots/homepage.jpg)
 
+### 📦 Product Page
+
+![Homepage](uploads/screenshots/productpage.jpg)
+
 ### 🛒 Cart and Checkout Flow
 
 ![Cart](uploads/screenshots/checkout_flow.gif)
 
-### 📦 Product Page
-
-![Product Page]()
-
 ### 🛠️ Admin Panel
 
-![Admin Panel](screenshots/admin.png)
-
-_or embed a GIF like this:_
-
-![TechMartX Demo](screenshots/demo.gif)
+![Admin Panel](uploads/screenshots/admin_panel.gif)
 
 ## 📦 Installation
 

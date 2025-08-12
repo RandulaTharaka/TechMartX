@@ -1,9 +1,11 @@
-# 💻 TechMartX – MERN Stack E-commerce Platform
+# 💻 TechMartX – MERN Stack e-commerce Platform
 
-**TechMartX is a full-featured e-commerce application for buying and selling tech products.**
+> TechMartX is an e-commerce web application for buying and selling tech products.
 
 🛒 Live Demo: [www.techmartx.com](https://www.techmartx.com)  
-📦 Built with the MERN Stack (MongoDB, Express, React, Node.js)
+📦 Built with the MERN Stack (MongoDB, Express, React, Node.js) & Redux
+
+![Homepage](docs/screenshots/screens.jpg)
 
 ## 🚀 Project Overview
 

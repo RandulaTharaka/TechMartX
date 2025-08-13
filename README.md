@@ -2,7 +2,7 @@
 
 > TechMartX is an e-commerce web application for buying and selling tech products.
 
-🛒 Live Demo: [www.techmartx.com](https://www.techmartx.com)
+🛒 Live Demo: [www.techmartx.store](https://www.techmartx.store)
 
 ![Screens](docs/screenshots/screens.jpg)
 

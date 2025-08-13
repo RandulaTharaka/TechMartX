@@ -2,10 +2,9 @@
 
 > TechMartX is an e-commerce web application for buying and selling tech products.
 
-🛒 Live Demo: [www.techmartx.com](https://www.techmartx.com)  
-📦 Built with the MERN Stack (MongoDB, Express, React, Node.js) & Redux
+🛒 Live Demo: [www.techmartx.com](https://www.techmartx.com)
 
-![Homepage](docs/screenshots/screens.jpg)
+![Screens](docs/screenshots/screens.jpg)
 
 ## 🚀 Project Overview
 
@@ -14,11 +13,9 @@ It includes features such as user authentication, product management, shopping c
 
 ## 🎯 Why I Built This
 
-I built TechMartX as the final project for a 3-month MERN stack course at the University of Colombo, as well as part of my personal learning journey to deepen my skills in full-stack web development.
+I built TechMartX as the final project for a 3-month MERN Stack Course at the University of Colombo, as well as part of my personal learning journey to deepen my skills in JavaScript-based full-stack web development.
 
-Beyond meeting course requirements, I focused on truly understanding how modern JavaScript technologies work from frontend architecture with React and Redux Toolkit to backend APIs with Node.js and MongoDB.
-
-Throughout the project, I thoroughly documented the code with comments to reinforce my understanding of key concepts such as component logic, API integration, state management, and user authentication.
+Note that throughout the project, I thoroughly documented the code with comments to reinforce my understanding of key concepts.
 
 ## 🧠 Developer Notes
 
@@ -36,26 +33,19 @@ Note that this is a raw, working document created during my learning process - n
 - **Database:** MongoDB (hosted on MongoDB Atlas)
 - **Other Tools & Concepts:** JWT Authentication, RESTful APIs, Postman, MongoDB Compass
 
-## ✨ Key Features
+## ✨ Features
 
-- ✅ User registration and authentication (JWT)
-- 🛍️ Product listing with search and filter
-- 🛒 Shopping cart with quantity control
-- 💳 Checkout and PayPal payment integration
-- 🗣️ Product reviews and customer ratings
-- 📦 Order history and user profile management
-- 🛠️ Admin dashboard to manage products, users, and orders
-- 📱 Fully responsive layout for mobile, tablet, and desktop
+- User registration and authentication (JWT)
+- Shopping cart with quantity control
+- Product listing with search & filter
+- Checkout and PayPal payment integration
+- Product reviews and customer ratings
+- Order history and user profile management
+- Admin dashboard to manage products, users, and orders
+- Top products carousel & product pagination
+- Responsive layout for mobile, tablet, and desktop
 
-## 📸 Screenshots
-
-### 🏠 Home Page
-
-![Homepage](docs/screenshots/homepage.jpg)
-
-### 📦 Product Page
-
-![Homepage](docs/screenshots/product_page.jpg)
+## ▶️ Feature Demos
 
 ### 🛒 Cart and Checkout Flow
 
@@ -67,29 +57,33 @@ Note that this is a raw, working document created during my learning process - n
 
 ## 📦 Installation
 
-1. **Clone the repository:**
+1. Create a MongoDB database and obtain your `MongoDB URI` - [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/register)
+
+2. Create a PayPal account and obtain your `Client ID` - [PayPal Developer](https://developer.paypal.com/)
+
+3. **Clone the repository:**
 
    ```sh
    git clone https://github.com/RandulaTharaka/TechMartX.git
 
    ```
 
-2. **Install dependencies for both frontend and backend:**
+4. **Install dependencies for both frontend and backend:**
    ```sh
    cd TechMartX
    npm install
    cd frontend
    npm install
    ```
-3. **Set up environment variables:**  
-   Copy the `.env.example` file to `.env` and fill in the required values:
+5. **Set up environment variables:**  
+   Rename the `.env.example` file to `.env` and add the following
 
    ```env
    NODE_ENV=development
-   PORT=desired_port
+   PORT=5000
 
    MONGO_URI=your_mongodb_uri
-   JWT_SECRET=your_jwt_secret
+   JWT_SECRET=abc123
 
    PAYPAL_CLIENT_ID=your_paypal_client_id
    PAYPAL_APP_SECRET=your_paypal_app_secret
@@ -98,10 +92,22 @@ Note that this is a raw, working document created during my learning process - n
    PAGINATION_LIMIT=8
    ```
 
-4. **Start the development servers:**
+6. **Start the development servers:**
+
    ```sh
+   # Run frontend (:3000) & backend (:5000)
    npm run dev
+   # Run backend only
+   npm run server
    ```
+
+7. **Build & Deploy**
+
+```sh
+   # Create frontend production build
+   cd frontend
+   npm run build
+```
 
 ## 📚 API Documentation
 

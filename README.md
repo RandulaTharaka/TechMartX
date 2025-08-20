@@ -13,16 +13,12 @@ Built to demonstrate clean React + Redux Toolkit architecture, REST API design, 
 
 ### ✅ Quick Glance
 
----
-
 | Area       | Highlights                                                                                         |
 | ---------- | -------------------------------------------------------------------------------------------------- |
 | Frontend   | React 18, Redux Toolkit + RTK Query, component composition, responsive UI (React‑Bootstrap)        |
 | Backend    | Node.js / Express modular routers, async handlers, secure JWT auth, pagination, PayPal integration |
 | Data Layer | MongoDB + Mongoose models (Users / Products / Orders / Reviews) with indexing considerations       |
 | Payments   | PayPal Smart Buttons + server verification flow                                                    |
-
----
 
 ## 🎯 Why I Built This
 
@@ -41,8 +37,6 @@ They cover some foundational concepts in React, Redux, JavaScript and other Tech
 
 ## 🛠️ Tech Stack
 
----
-
 | Layer    | Tools                                                                 |
 | -------- | --------------------------------------------------------------------- |
 | Frontend | React, Redux Toolkit, RTK Query, React Router, React‑Bootstrap        |
@@ -52,8 +46,6 @@ They cover some foundational concepts in React, Redux, JavaScript and other Tech
 | Database | MongoDB Atlas                                                         |
 | Tooling  | Nodemon, Concurrent Dev Scripts, ESLint (extendable), Postman         |
 | Other    | Toast notifications, Custom hooks/utilities, Environment‑based config |
-
----
 
 ## ✨ Features
 

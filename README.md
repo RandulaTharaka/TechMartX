@@ -13,6 +13,8 @@ Built to demonstrate clean React + Redux Toolkit architecture, REST API design, 
 
 ### ✅ Quick Glance
 
+---
+
 | Area       | Highlights                                                                                         |
 | ---------- | -------------------------------------------------------------------------------------------------- |
 | Frontend   | React 18, Redux Toolkit + RTK Query, component composition, responsive UI (React‑Bootstrap)        |
@@ -38,6 +40,8 @@ They cover some foundational concepts in React, Redux, JavaScript and other Tech
 > Note that this is a raw, working document created during my learning process - not a finalized guide.
 
 ## 🛠️ Tech Stack
+
+---
 
 | Layer    | Tools                                                                 |
 | -------- | --------------------------------------------------------------------- |

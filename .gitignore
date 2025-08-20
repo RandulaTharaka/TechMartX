@@ -5,6 +5,9 @@ node_modules
 /.pnp
 .pnp.js
 
+# docs to ignore
+README2.md
+
 # testing
 /coverage
 

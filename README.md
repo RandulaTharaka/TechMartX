@@ -2,14 +2,25 @@
 
 > TechMartX is an e-commerce web application for buying and selling tech products.
 
-🌐 Try the App: [www.techmartx.store](https://www.techmartx.store)
+🌐 Visit Site: [www.techmartx.store](https://www.techmartx.store)
 
 ![Screens](docs/screenshots/screens.jpg)
 
 ## 🚀 Project Overview
 
-TechMartX allows users to browse, search, and purchase technology products online.  
-It includes features such as user authentication, product management, shopping cart functionality, order processing, and an admin dashboard.
+TechMartX is a MERN e‑commerce web application featuring product catalog, cart & checkout, PayPal payments, order management, and an admin dashboard.  
+Built to demonstrate clean React + Redux Toolkit architecture, REST API design, and full‑stack delivery.
+
+### ✅ Quick Glance
+
+| Area       | Highlights                                                                                         |
+| ---------- | -------------------------------------------------------------------------------------------------- |
+| Frontend   | React 18, Redux Toolkit + RTK Query, component composition, responsive UI (React‑Bootstrap)        |
+| Backend    | Node.js / Express modular routers, async handlers, secure JWT auth, pagination, PayPal integration |
+| Data Layer | MongoDB + Mongoose models (Users / Products / Orders / Reviews) with indexing considerations       |
+| Payments   | PayPal Smart Buttons + server verification flow                                                    |
+
+---
 
 ## 🎯 Why I Built This
 
@@ -24,36 +35,81 @@ They cover some foundational concepts in React, Redux, JavaScript and other Tech
 
 📄 [View Developer Notes PDF](docs/TechMartX_DeveloperNotes.pdf)
 
-Note that this is a raw, working document created during my learning process - not a finalized guide.
+> Note that this is a raw, working document created during my learning process - not a finalized guide.
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** React, Redux Toolkit, React Bootstrap, React Router
-- **Backend:** Node.js, Express.js
-- **Database:** MongoDB (hosted on MongoDB Atlas)
-- **Other Tools & Concepts:** JWT Authentication, RESTful APIs, Postman, MongoDB Compass
+| Layer    | Tools                                                                 |
+| -------- | --------------------------------------------------------------------- |
+| Frontend | React, Redux Toolkit, RTK Query, React Router, React‑Bootstrap        |
+| Backend  | Node.js, Express.js, Mongoose                                         |
+| Auth     | JWT (access tokens), bcrypt hashing                                   |
+| Payments | PayPal Checkout (Sandbox -> Live ready)                               |
+| Database | MongoDB Atlas                                                         |
+| Tooling  | Nodemon, Concurrent Dev Scripts, ESLint (extendable), Postman         |
+| Other    | Toast notifications, Custom hooks/utilities, Environment‑based config |
+
+---
 
 ## ✨ Features
 
-- User registration and authentication (JWT)
-- Shopping cart with quantity control
-- Product listing with search & filter
-- Checkout and PayPal payment integration
-- Product reviews and customer ratings
-- Order history and user profile management
-- Admin dashboard to manage products, users, and orders
-- Top products carousel & product pagination
-- Responsive layout for mobile, tablet, and desktop
+- JWT authentication & protected routes
+- Product listing, detail view, reviews & ratings
+- Search & pagination (server + client integration)
+- Cart with quantity management & persisted state
+- Checkout flow: shipping → payment → place order
+- PayPal payment capture & order status updates
+- Order history & profile management
+- Admin dashboard: products, users, orders
+- Top products carousel
+- Responsive + accessible UI patterns
 
-## ▶️ Feature Demos
+## 🎬 Feature Demos
 
 ### 🛒 Cart and Checkout Flow
 
 ![Cart](docs/screenshots/checkout_flow.gif)
 
-### 🛠️ Admin Panel
+### 🛠 Admin Panel
 
 ![Admin Panel](docs/screenshots/admin_panel.gif)
+
+## 🧩 Architecture Overview
+
+```
+backend/
+  config/        # DB & PayPal config
+  controllers/   # Business logic per resource
+  middleware/    # Auth, error handlers
+  models/        # Mongoose schemas
+  routes/        # Express routers
+  utils/         # Helpers (e.g., token generator)
+frontend/
+  src/
+    components/  # Reusable UI (Rating, Loader, etc.)
+    screens/     # Route-level containers
+    slices/      # Redux Toolkit slices + RTK Query endpoints
+    utils/       # formatPrice, formatDate, etc.
+    hooks/       # (extendable)
+    assets/      # Styles & static media
+```
+
+## 🔐 Security & Best Practices
+
+- Passwords hashed with bcrypt.
+- JWT stored client‑side; protected routes validate token server‑side.
+- Environment variables for secrets & external service keys.
+- Data validation at model + route level (extensible).
+- Avoids exposing admin-only operations to non‑privileged users.
+
+## ⚙️ Performance Considerations
+
+- RTK Query caching reduces duplicate API calls.
+- Pagination limits payload for product lists.
+- Lean Mongoose queries where applicable (extendable).
+- Image dimensions constrained for consistent layout.
+
+---
 
 ## 📦 Installation
 
@@ -109,17 +165,22 @@ Note that this is a raw, working document created during my learning process - n
    npm run build
 ```
 
-## 📚 API Documentation
+## 📚 Selected API Endpoints
 
-The backend exposes RESTful endpoints for products, users, orders, and authentication.
+| Method | Endpoint                | Description                               |
+| ------ | ----------------------- | ----------------------------------------- |
+| GET    | /api/products           | List products (with pagination & keyword) |
+| GET    | /api/products/:id       | Product details                           |
+| POST   | /api/users/login        | Authenticate user                         |
+| POST   | /api/users              | Register user                             |
+| POST   | /api/orders             | Create order                              |
+| GET    | /api/orders/:id         | Get order details                         |
+| PUT    | /api/orders/:id/pay     | Mark order paid (PayPal)                  |
+| PUT    | /api/orders/:id/deliver | Mark delivered (admin)                    |
 
-- **GET /api/products** — List all products
-- **GET /api/products/:id** — Get product details
-- **POST /api/users/login** — User login
-- **POST /api/orders** — Create a new order
-- **GET /api/orders/:id** — Get order details
+> Additional endpoints include reviews, admin CRUD, and profile updates.
 
-_See the codebase for more endpoints and usage._
+---
 
 ## 📄 License
 
@@ -127,6 +188,9 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 🤝 Connect With Me
 
-I'm passionate about building full-stack applications and always open to meaningful collaborations, feedback, and new opportunities in software development.
+I'm passionate about building full-stack applications and open to new opportunities in software development.
 
 Feel free to connect or reach out!
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Randula%20Tharaka-blue?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/randula-tharaka-79a61a145/)
+[![Email](https://img.shields.io/badge/Email-iamrandula%40gmail.com-red?style=flat-square&logo=gmail)](mailto:iamrandula@gmail.com)

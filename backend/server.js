@@ -1,3 +1,4 @@
+import cors from "cors";
 import path from "path";
 import express from "express"; // "type: module"
 import dotenv from "dotenv";
@@ -16,13 +17,35 @@ connectDB(); // Connect to MongoDB
 
 const app = express();
 
+// CORS: allow requests only from your deployed frontend (safer than *)
+const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:3000";
+app.use(
+  cors({
+    origin: FRONTEND_URL,
+    credentials: true,
+  })
+);
+
+// Optional: allow preflight for all routes
+app.options(
+  "*",
+  cors({
+    origin: FRONTEND_URL,
+    credentials: true,
+  })
+);
+
 // Body parser middleware
 app.use(express.json()); // parses application/json (like  API requests with JSON payloads)
 app.use(express.urlencoded({ extended: true })); // parses url encoded data (like form submissions)
 
+// Add a simple health endpoint
+app.get("/api/health", (req, res) => res.json({ status: "OK" }));
+
 // Cookie parser middleware
 app.use(cookieParser()); // parses cookies attached to the client request object
 
+// Routers
 app.use("/api/products", productRoutes); //  It tells the Express application to use the productRoutes router for any incoming HTTP requests that start with the path /api/products.
 app.use("/api/users", userRoutes);
 app.use("/api/orders", orderRoutes);

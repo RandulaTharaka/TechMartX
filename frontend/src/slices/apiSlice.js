@@ -3,7 +3,17 @@ import { BASE_URL } from "../constants";
 
 // This file is setting up an API slice using Redux Toolkit's RTK Query.
 
-const baseQuery = fetchBaseQuery({ baseUrl: BASE_URL }); // fetchBasQuery() func. allows to make request to backend api
+// prefer REACT_APP_API_URL at build time, fallback to BASE_URL, or to root
+const baseUrl = process.env.REACT_APP_API_URL || BASE_URL || "/";
+
+const baseQuery = fetchBaseQuery({
+  baseUrl,
+  prepareHeaders: (headers, { getState }) => {
+    const token = getState().auth?.userInfo?.token;
+    if (token) headers.set("authorization", `Bearer ${token}`);
+    return headers;
+  },
+}); // fetchBasQuery() func. allows to make request to backend api
 
 export const apiSlice = createApi({
   // createApi func. is used to set up a central place for managing all API interactions in a Redux application.

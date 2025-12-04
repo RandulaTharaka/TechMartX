@@ -56,7 +56,7 @@ app.get("/api/config/paypal", (req, res) =>
 );
 
 // Upload image
-app.use("/api/upload", uploadRoutes);
+app.use("/api/backend/upload", uploadRoutes);
 const __dirname = path.resolve(); // path.resolve() returns the absolute path to the current working directory.
 
 // Allows user(frontend) to access uploaded files via a public URL

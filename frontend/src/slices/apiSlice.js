@@ -1,5 +1,4 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import process from "process";
 import { BASE_URL } from "../constants";
 
 // This file is setting up an API slice using Redux Toolkit's RTK Query.

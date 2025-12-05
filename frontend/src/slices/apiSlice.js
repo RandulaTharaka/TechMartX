@@ -7,6 +7,7 @@ import { BASE_URL } from "../constants";
 const baseUrl = process.env.REACT_APP_API_URL || BASE_URL || "/";
 const baseQuery = fetchBaseQuery({
   baseUrl,
+  credentials: "include", // <-- ensure cookies are sent & accepted (for cross-site)
   prepareHeaders: (headers, { getState }) => {
     const token = getState().auth?.userInfo?.token;
     if (token) headers.set("authorization", `Bearer ${token}`);

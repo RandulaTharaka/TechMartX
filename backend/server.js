@@ -3,6 +3,7 @@ import path from "path";
 import express from "express"; // "type: module"
 import dotenv from "dotenv";
 dotenv.config();
+import process from "process";
 import connectDB from "./config/db.js";
 import cookieParser from "cookie-parser"; // for parsing cookies in requests
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
@@ -65,8 +66,8 @@ const __dirname = path.resolve(); // path.resolve() returns the absolute path to
 // path.join(__dirname, "/uploads") creates the absolute path to your uploads folder
 // If you type /uploads/filename.jpg in your browser, Express will look for a file called filename.jpg inside the uploads folder in your project root.
 app.use(
-  "api/backend/uploads",
-  express.static(path.join(__dirname, "api/backend/uploads"))
+  "/backend/uploads",
+  express.static(path.join(__dirname, "/backend/uploads"))
 );
 
 // Access uploaded image

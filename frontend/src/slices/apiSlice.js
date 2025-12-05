@@ -1,10 +1,11 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import process from "process";
 import { BASE_URL } from "../constants";
 
 // This file is setting up an API slice using Redux Toolkit's RTK Query.
 
-// prefer VITE_API_URL at build time, fallback to BASE_URL, or to root
-const baseUrl = import.meta.env.VITE_API_URL || BASE_URL || "/api";
+// prefer REACT_APP_API_URL at build time, fallback to BASE_URL, or to root
+const baseUrl = process.env.REACT_APP_API_URL || BASE_URL || "/";
 const baseQuery = fetchBaseQuery({
   baseUrl,
   prepareHeaders: (headers, { getState }) => {

@@ -21,6 +21,7 @@ import { toast } from "react-toastify";
 import { addToCart } from "../slices/cartSlice";
 import { useDispatch } from "react-redux"; // for dispatching actions
 import Meta from "../components/Meta";
+import { getImageUrl } from "../utils/media";
 
 // The ProductScreen component is a React functional component that displays detailed information about a single product in this e-commerce application.
 const ProductScreen = () => {
@@ -109,7 +110,11 @@ const ProductScreen = () => {
           <Meta title={product.name} />
           <Row>
             <Col md={5}>
-              <Image src={product.image} alt={product.name} fluid />
+              <Image
+                src={getImageUrl(product.image)}
+                alt={product.name}
+                fluid
+              />
             </Col>
 
             <Col md={4}>

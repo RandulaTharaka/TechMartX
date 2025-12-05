@@ -53,9 +53,13 @@ router.post("/", (req, res) => {
       return res.status(400).send({ message: err.message });
     }
 
+    // Normalize file path to forward slashes (for Windows)
+    const imagePath = req.file.path.replace(/\\/g, "/");
+
+    // return fully-qualified URL so front-end doesn't need to construct site URL
     res.status(200).send({
       message: "Image uploaded successfully",
-      image: `/${req.file.path}`, // image url send with res
+      image: `${req.protocol}://${req.get("host")}/${imagePath}`,
     });
   });
 });

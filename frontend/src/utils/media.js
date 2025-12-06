@@ -15,6 +15,8 @@ export function getImageUrl(imagePath) {
   if (!p.startsWith("/")) p = "/" + p;
 
   // Prepend the backend base URL if set
-  const backend = (process.env.REACT_APP_API_URL || "").replace(/\/$/, "");
+  const backend = (
+    process.env.REACT_APP_API_URL || "https://techmartx.onrender.com"
+  ).replace(/\/$/, "");
   return backend ? `${backend}${p}` : p;
 }

@@ -15,6 +15,7 @@ import Loader from "../components/Loader";
 import Meta from "../components/Meta";
 import formatPrice from "../utils/formatPrice";
 import { formatDate } from "../utils/formatDate";
+import { getImageUrl } from "../utils/media";
 
 const OrderScreen = () => {
   const { id: orderId } = useParams(); // Get the order ID from the URL parameters
@@ -176,7 +177,12 @@ const OrderScreen = () => {
                 <ListGroup.Item key={index}>
                   <Row>
                     <Col md={1}>
-                      <Image src={item.image} alt={item.name} fluid rounded />
+                      <Image
+                        src={getImageUrl(item.image)}
+                        alt={item.name}
+                        fluid
+                        rounded
+                      />
                     </Col>
                     <Col>
                       <Link to={`/product/${item.product}`}>{item.name}</Link>

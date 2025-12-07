@@ -19,19 +19,36 @@ connectDB(); // Connect to MongoDB
 const app = express();
 
 // CORS: allow requests only from your deployed frontend (safer than *)
-const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:3000";
+// Build allowed origins (from environment or hard-coded dev default)
+const allowedOrigins = [
+  process.env.FRONTEND_URL, // e.g., https://techmartx-frontend.onrender.com
+  "http://localhost:3000", // dev local frontend
+].filter(Boolean); // remove falsey values such as undefined, "" from the array. eg: if process.env.FRONTEND_URL not set (undefined) it removes from array and keep localhost:3000
+
+// CORS middleware using a dynamic origin check
 app.use(
   cors({
-    origin: FRONTEND_URL,
+    origin: (incomingOrigin, callback) => {
+      // allow non-browser requests such as curl/postman (incomingOrigin undefined)
+      if (!incomingOrigin) return callback(null, true);
+      if (allowedOrigins.indexOf(incomingOrigin) !== -1)
+        return callback(null, true);
+      callback(new Error("Not allowed by CORS"), false);
+    },
     credentials: true,
   })
 );
 
-// Optional: allow preflight for all routes
+// Preflight handling (OPTIONS) for all routes using same logic
 app.options(
   "*",
   cors({
-    origin: FRONTEND_URL,
+    origin: (incomingOrigin, callback) => {
+      if (!incomingOrigin) return callback(null, true);
+      if (allowedOrigins.indexOf(incomingOrigin) !== -1)
+        return callback(null, true);
+      callback(new Error("Not allowed by CORS"), false);
+    },
     credentials: true,
   })
 );

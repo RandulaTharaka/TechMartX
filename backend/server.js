@@ -21,7 +21,7 @@ const app = express();
 // CORS: allow requests only from your deployed frontend (safer than *)
 // Build allowed origins (from environment or hard-coded dev default)
 const allowedOrigins = [
-  process.env.FRONTEND_URL, // e.g., https://techmartx-frontend.onrender.com
+  process.env.FRONTEND_URL || "https://www.techmartx.store", // e.g., https://techmartx-frontend.onrender.com
   "http://localhost:3000", // dev local frontend
 ].filter(Boolean); // remove falsey values such as undefined, "" from the array. eg: if process.env.FRONTEND_URL not set (undefined) it removes from array and keep localhost:3000
 

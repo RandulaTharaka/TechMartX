@@ -19,39 +19,38 @@ connectDB(); // Connect to MongoDB
 const app = express();
 
 // CORS: allow requests only from your deployed frontend (safer than *)
-// Build allowed origins (from environment or hard-coded dev default)
-const allowedOrigins = [
-  process.env.FRONTEND_URL || "https://www.techmartx.store", // e.g., https://techmartx-frontend.onrender.com
-  "http://localhost:3000", // dev local frontend
-].filter(Boolean); // remove falsey values such as undefined, "" from the array. eg: if process.env.FRONTEND_URL not set (undefined) it removes from array and keep localhost:3000
+// Build allowed origins from env or fallback to local dev
+const allowedOrigins = (
+  process.env.ALLOWED_ORIGINS ||
+  process.env.FRONTEND_URL ||
+  "http://localhost:3000"
+)
+  .split(",")
+  .map((s) => s.trim())
+  .filter(Boolean); // remove falsey values such as undefined, "" from the array. eg: if process.env.FRONTEND_URL not set (undefined) it removes from array and keep localhost:3000
 
-// CORS middleware using a dynamic origin check
-app.use(
-  cors({
-    origin: (incomingOrigin, callback) => {
-      // allow non-browser requests such as curl/postman (incomingOrigin undefined)
-      if (!incomingOrigin) return callback(null, true);
-      if (allowedOrigins.indexOf(incomingOrigin) !== -1)
-        return callback(null, true);
-      callback(new Error("Not allowed by CORS"), false);
-    },
-    credentials: true,
-  })
-);
+// CORS options using same function consistently
+// This ensures both normal requests and preflight are handled by identical logic.
+const corsOptions = {
+  origin: (origin, callback) => {
+    console.log("[CORS] incoming origin:", origin); // debug log — remove in production if desired
+    if (!origin) return callback(null, true); // allow curl/postman/server-to-server
+    if (allowedOrigins.includes(origin)) return callback(null, true);
+    return callback(null, false);
+  },
+  credentials: true,
+};
 
-// Preflight handling (OPTIONS) for all routes using same logic
-app.options(
-  "*",
-  cors({
-    origin: (incomingOrigin, callback) => {
-      if (!incomingOrigin) return callback(null, true);
-      if (allowedOrigins.indexOf(incomingOrigin) !== -1)
-        return callback(null, true);
-      callback(new Error("Not allowed by CORS"), false);
-    },
-    credentials: true,
-  })
-);
+// Apply to app (global)
+app.use(cors(corsOptions));
+
+// Optional (explicit preflight): re-use same corsOptions
+app.options("*", cors(corsOptions));
+
+/* Why you need that corsOptions block
+Browsers use a preflight (OPTIONS) request before your real API call.
+If preflight and the actual request use different CORS rules, the browser blocks the request.
+Using one corsOptions object for both app.use(cors(...)) and app.options("*", cors(...)) ensures the server replies the same CORS headers for preflight and real requests — preventing CORS errors. */
 
 // Body parser middleware
 app.use(express.json()); // parses application/json (like  API requests with JSON payloads)
